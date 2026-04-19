@@ -11,6 +11,7 @@ Untuk menjalankan server.js, Anda harus menginstall terlebih dahulu Node JS pada
 4. Contoh menjalankan di cmd:
    ```bash
    node C:\download\server.js
-5. Masukkan Alamat file html yang akan dijalankan.
+5. Masukkan Alamat folder html yang akan dijalankan.
 6. Masukkan port yang diinginkan.
 7. Ketik alamat url server pada browser.
+8. Server akan membuka file `index.html` pada alamat folder html yang telah dimasukkan sebelumnya.
