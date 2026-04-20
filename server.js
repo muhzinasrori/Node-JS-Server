@@ -113,8 +113,15 @@ const server = http.createServer((req, res) => {
         return res.end();
     }
 
-    let requestUrl = req.url === '/' ? '/index.html' : req.url;
-    let filePath = path.join(folderTujuan, decodeURIComponent(requestUrl));
+    //--mengambil info url
+    let requestUrl = decodeURIComponent(req.url);
+    let filePath = path.join(folderTujuan, requestUrl); //--untuk menggabungkan url yang ditulis pada browser dengan path yang diterapkan pada server
+
+    //--cek apakah url yang dimasukkan merupakan path (menggunakan perintah isDirectory)
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()){
+        filePath = path.join(filePath, 'index.html'); //--menambahkan index.html pada url. misal url/index.html
+    }
+    
     const ext = path.extname(filePath).toLowerCase();
 
     // --- LOGIKA KHUSUS VIDEO (STREAMING) ---
